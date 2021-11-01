@@ -75,41 +75,49 @@ class AddressBookMain {
             person.remove(place);
     }
 
+    /*
+     * Mian function of class
+     * */
     public static void main(String[] args) {
         Scanner inp = new Scanner(System.in);
         AddressBookMain obj = new AddressBookMain();
-        menu();
-        int choice = inp.nextInt();
-        while (choice != 3) {
+        System.out.println("Enter no of contacts to Add");
+        int i =inp.nextInt();
+        for(int k=0;k<=i;k++){
+            menu();
+            int choice = inp.nextInt();
+            while (choice != 3) {
 
-            if (choice == 1) {
-                System.out.println("Enter First Name:");
-                String fName = inp.next();
-                System.out.println("Enter Last NAme");
-                String lName = inp.next();
-                System.out.println("Enter  phone number.");
-                int number = inp.nextInt();
-                System.out.println("Enter The City");
-                String city = inp.next();
-                System.out.println("Enter The State");
-                String state = inp.next();
-                System.out.println("Enter the pin code");
-                int pinCode = inp.nextInt();
-                obj.addContact(new contact(fName, lName, number, city, state, pinCode));
+                if (choice == 1) {
+                    System.out.println("Enter First Name:");
+                    String fName = inp.next();
+                    System.out.println("Enter Last NAme");
+                    String lName = inp.next();
+                    System.out.println("Enter  phone number.");
+                    int number = inp.nextInt();
+                    System.out.println("Enter The City");
+                    String city = inp.next();
+                    System.out.println("Enter The State");
+                    String state = inp.next();
+                    System.out.println("Enter the pin code");
+                    int pinCode = inp.nextInt();
+                    obj.addContact(new contact(fName, lName, number, city, state, pinCode));
 
+                }
+                else if (choice == 2) {
+                    //contact rv = new contact();
+                    System.out.println("Enter the First Name of the contact you want to edit?");
+                    String fName = inp.next();
+                    obj.editContact(fName);
+                }
+                else if (choice == 3) {
+                    System.out.println("What is the First name of the contact you want to delete?");
+                    String fName = inp.next();
+                    obj.deleteContact(fName);
+                }
+                choice = inp.nextInt();
             }
-            else if (choice == 2) {
-                //contact rv = new contact();
-                System.out.println("Enter the First Name of the contact you want to edit?");
-                String fName = inp.next();
-                obj.editContact(fName);
-            }
-            else if (choice == 3) {
-                System.out.println("What is the First name of the contact you want to delete?");
-                String fName = inp.next();
-                obj.deleteContact(fName);
-            }
-            choice = inp.nextInt();
         }
     }
 }
+
